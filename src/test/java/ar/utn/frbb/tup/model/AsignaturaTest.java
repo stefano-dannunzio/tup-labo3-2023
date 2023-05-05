@@ -27,6 +27,50 @@ public class AsignaturaTest {
     }
 
     @Test
-    public void setNota() {
+    public void testAprobarAasignatura() throws Exception{
+        Asignatura asignatura = new Asignatura(materia);
+        assertEquals(EstadoAsignatura.NO_CURSADA,asignatura.getEstado());
+        asignatura.cursarAsignatura();
+        asignatura.aprobarAsignatura(8);
+        assertEquals(EstadoAsignatura.APROBADA,asignatura.getEstado());
+
+    }
+
+    @Test(expected = Exception.class)
+    public void testAprobarAsignaturaMateriaNoCursada() throws Exception{
+        Asignatura asignatura = new Asignatura(materia);
+        asignatura.aprobarAsignatura(8);
+    }
+
+    @Test (expected = Exception.class)
+    public void testAprobarAasignaturaYaAprobada() throws Exception{
+        Asignatura asignatura = new Asignatura(materia);
+        asignatura.cursarAsignatura();
+        asignatura.aprobarAsignatura(8);
+        assertEquals(EstadoAsignatura.APROBADA,asignatura.getEstado());
+        asignatura.aprobarAsignatura(9);
+
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void aprobarAsignaturaNotaMenorCero() throws Exception {
+        Asignatura asignatura = new Asignatura(materia);
+        asignatura.cursarAsignatura();
+        asignatura.aprobarAsignatura(-3);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void aprobarAsignaturaNotaMayorDiez() throws Exception {
+        Asignatura asignatura = new Asignatura(materia);
+        asignatura.cursarAsignatura();
+        asignatura.aprobarAsignatura(13);
+    }
+
+    @Test
+    public void aprobarAsignaturaNotaDesaprobado() throws Exception {
+        Asignatura asignatura = new Asignatura(materia);
+        asignatura.cursarAsignatura();
+        asignatura.aprobarAsignatura(3);
+        assertEquals(EstadoAsignatura.CURSADA, asignatura.getEstado());
     }
 }
