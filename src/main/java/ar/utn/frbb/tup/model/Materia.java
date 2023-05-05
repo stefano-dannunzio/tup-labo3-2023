@@ -21,4 +21,8 @@ public class Materia {
     public void agregarCorrelatividad(Materia m){
 
     }
+
+    public String getNombre() {
+        return nombre;
+    }
 }
