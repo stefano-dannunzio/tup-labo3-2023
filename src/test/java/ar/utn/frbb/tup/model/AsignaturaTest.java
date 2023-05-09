@@ -1,5 +1,6 @@
 package ar.utn.frbb.tup.model;
 
+import ar.utn.frbb.tup.model.exception.EstadoIncorrectoException;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -27,23 +28,26 @@ public class AsignaturaTest {
     }
 
     @Test
-    public void testAprobarAasignatura() throws Exception{
+    public void testAprobarAasignatura(){
         Asignatura asignatura = new Asignatura(materia);
         assertEquals(EstadoAsignatura.NO_CURSADA,asignatura.getEstado());
         asignatura.cursarAsignatura();
-        asignatura.aprobarAsignatura(8);
-        assertEquals(EstadoAsignatura.APROBADA,asignatura.getEstado());
-
+        try {
+            asignatura.aprobarAsignatura(8);
+            assertEquals(EstadoAsignatura.APROBADA,asignatura.getEstado());
+        } catch (EstadoIncorrectoException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    @Test(expected = Exception.class)
-    public void testAprobarAsignaturaMateriaNoCursada() throws Exception{
+    @Test(expected = EstadoIncorrectoException.class)
+    public void testAprobarAsignaturaMateriaNoCursada() throws EstadoIncorrectoException{
         Asignatura asignatura = new Asignatura(materia);
         asignatura.aprobarAsignatura(8);
     }
 
-    @Test (expected = Exception.class)
-    public void testAprobarAasignaturaYaAprobada() throws Exception{
+    @Test (expected = EstadoIncorrectoException.class)
+    public void testAprobarAasignaturaYaAprobada() throws EstadoIncorrectoException{
         Asignatura asignatura = new Asignatura(materia);
         asignatura.cursarAsignatura();
         asignatura.aprobarAsignatura(8);
@@ -53,21 +57,21 @@ public class AsignaturaTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void aprobarAsignaturaNotaMenorCero() throws Exception {
+    public void aprobarAsignaturaNotaMenorCero() throws EstadoIncorrectoException {
         Asignatura asignatura = new Asignatura(materia);
         asignatura.cursarAsignatura();
         asignatura.aprobarAsignatura(-3);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void aprobarAsignaturaNotaMayorDiez() throws Exception {
+    public void aprobarAsignaturaNotaMayorDiez() throws EstadoIncorrectoException {
         Asignatura asignatura = new Asignatura(materia);
         asignatura.cursarAsignatura();
         asignatura.aprobarAsignatura(13);
     }
 
     @Test
-    public void aprobarAsignaturaNotaDesaprobado() throws Exception {
+    public void aprobarAsignaturaNotaDesaprobado() throws EstadoIncorrectoException {
         Asignatura asignatura = new Asignatura(materia);
         asignatura.cursarAsignatura();
         asignatura.aprobarAsignatura(3);
