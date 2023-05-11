@@ -7,7 +7,7 @@ public class Profesor {
     private final String apellido;
     private final String titulo;
 
-    private List<Materia> materiasDicatadas;
+    private List<Materia> materiasDictadas;
 
     public Profesor(String nombre, String apellido, String titulo) {
         this.apellido = apellido;

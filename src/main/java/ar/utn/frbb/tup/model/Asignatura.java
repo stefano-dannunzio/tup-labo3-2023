@@ -1,5 +1,6 @@
 package ar.utn.frbb.tup.model;
 
+import ar.utn.frbb.tup.model.exception.CorrelatividadesNoAprobadasException;
 import ar.utn.frbb.tup.model.exception.EstadoIncorrectoException;
 
 import java.util.Optional;
@@ -35,17 +36,22 @@ public class Asignatura {
         return this.materia.getNombre();
     }
 
+    public Materia getMateria() {
+        return materia;
+    }
+
     public void cursarAsignatura(){
         this.estado = EstadoAsignatura.CURSADA;
     }
 
-    public void aprobarAsignatura(int nota) throws EstadoIncorrectoException{
+    public void aprobarAsignatura(int nota) throws EstadoIncorrectoException {
         if (nota<0 || nota>10){
             throw new IllegalArgumentException("La nota debe estar entre 0 y 10");
         }
          if (!this.estado.equals(EstadoAsignatura.CURSADA)) {
             throw new EstadoIncorrectoException("La materia debe estar cursada");
         }
+
 
         if (nota>=4 && nota<=10) {
             this.estado = EstadoAsignatura.APROBADA;

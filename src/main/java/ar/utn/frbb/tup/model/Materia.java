@@ -1,5 +1,6 @@
 package ar.utn.frbb.tup.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Materia {
@@ -16,10 +17,17 @@ public class Materia {
         this.cuatrimestre = cuatrimestre;
         this.nombre = nombre;
         this.profesor = profesor;
+
+        correlatividades = new ArrayList<>();
     }
 
     public void agregarCorrelatividad(Materia m){
+        this.correlatividades.add(m);
 
+    }
+
+    public List<Materia> getCorrelatividades(){
+        return this.correlatividades;
     }
 
     public String getNombre() {
