@@ -25,4 +25,8 @@ public class Materia {
     public String getNombre() {
         return nombre;
     }
+
+    public List<Materia> getCorrelativas() {
+        return correlatividades;
+    }
 }
