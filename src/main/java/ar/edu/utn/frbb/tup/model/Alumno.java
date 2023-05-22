@@ -1,18 +1,20 @@
-package ar.utn.frbb.tup.model;
+package ar.edu.utn.frbb.tup.model;
 
-import ar.utn.frbb.tup.model.exception.CorrelatividadesNoAprobadasException;
+import ar.edu.utn.frbb.tup.model.exception.CorrelatividadesNoAprobadasException;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Alumno {
 
-    private final String nombre;
-    private final String apellido;
-    private final long dni;
+    private String nombre;
+    private String apellido;
+    private long dni;
 
     private List<Asignatura> asignaturas;
 
+    public Alumno() {
+    }
     public Alumno(String nombre, String apellido, long dni) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -20,6 +22,18 @@ public class Alumno {
 
         asignaturas = new ArrayList<>();
 
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public void setDni(long dni) {
+        this.dni = dni;
     }
 
     public String getNombre() {

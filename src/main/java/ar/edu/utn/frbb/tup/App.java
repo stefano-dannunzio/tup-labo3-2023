@@ -1,7 +1,8 @@
-package ar.utn.frbb.tup;
+package ar.edu.utn.frbb.tup;
 
-import ar.utn.frbb.tup.model.Materia;
-import ar.utn.frbb.tup.model.Profesor;
+import ar.edu.utn.frbb.tup.model.Alumno;
+import ar.edu.utn.frbb.tup.model.Profesor;
+import ar.edu.utn.frbb.tup.presentation.AlumnoInputProcessor;
 
 /**
  * Hello world!
@@ -18,7 +19,9 @@ public class App
 
         //Materia programacion1 = new Materia()
 
+        Alumno a = new Alumno();
 
-        System.out.println( "Hello World!" );
+        AlumnoInputProcessor  inputProcessor = new AlumnoInputProcessor();
+        inputProcessor.processInput(a);
     }
 }

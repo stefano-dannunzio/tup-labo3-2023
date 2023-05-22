@@ -1,4 +1,4 @@
-package ar.utn.frbb.tup.model;
+package ar.edu.utn.frbb.tup.model;
 
 import java.util.List;
 

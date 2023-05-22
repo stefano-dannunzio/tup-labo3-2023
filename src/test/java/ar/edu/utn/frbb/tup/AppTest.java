@@ -1,4 +1,4 @@
-package ar.utn.frbb.tup;
+package ar.edu.utn.frbb.tup;
 
 import static org.junit.Assert.assertTrue;
 

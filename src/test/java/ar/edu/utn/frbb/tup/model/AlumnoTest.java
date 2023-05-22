@@ -1,7 +1,7 @@
-package ar.utn.frbb.tup.model;
+package ar.edu.utn.frbb.tup.model;
 
-import ar.utn.frbb.tup.model.exception.CorrelatividadesNoAprobadasException;
-import ar.utn.frbb.tup.model.exception.EstadoIncorrectoException;
+import ar.edu.utn.frbb.tup.model.exception.EstadoIncorrectoException;
+import ar.edu.utn.frbb.tup.model.exception.CorrelatividadesNoAprobadasException;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
