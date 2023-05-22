@@ -22,6 +22,18 @@ public class Alumno {
         inicializarAsignaturas();
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public long getDni() {
+        return dni;
+    }
+
     private void inicializarAsignaturas() {
 
     }

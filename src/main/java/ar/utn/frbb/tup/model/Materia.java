@@ -16,6 +16,7 @@ public class Materia {
         this.cuatrimestre = cuatrimestre;
         this.nombre = nombre;
         this.profesor = profesor;
+
     }
 
     public void agregarCorrelatividad(Materia m){
