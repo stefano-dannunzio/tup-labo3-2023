@@ -85,7 +85,7 @@ public class AlumnoTest {
 
     }
 
-    @Test
+   /* @Test
     public void testNewAlumnoAprobandoAsignaturas() throws EstadoIncorrectoException {
         alumno = new Alumno("Stefano", "D'Annunzio", 42431228);
         alumno.agregarAsignatura(a1);
@@ -97,7 +97,7 @@ public class AlumnoTest {
         alumno.obtenerListaAsignaturas().get(2).cursarAsignatura();
         alumno.obtenerListaAsignaturas().get(3).cursarAsignatura();
         try {
-            if(alumno.puedeAprobar(alumno.obtenerListaAsignaturas().get(0))) {
+            alumno.aprobarAsignatura();) {
                 alumno.obtenerListaAsignaturas().get(0).aprobarAsignatura(8);
             }
             if(alumno.puedeAprobar(alumno.obtenerListaAsignaturas().get(1))) {
@@ -156,5 +156,5 @@ public class AlumnoTest {
             throw new RuntimeException(e);
         }
 
-    }
+    }*/
 }

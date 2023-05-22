@@ -1,6 +1,11 @@
 package ar.edu.utn.frbb.tup.model;
 
-import ar.edu.utn.frbb.tup.model.exception.CorrelatividadesNoAprobadasException;
+
+
+
+import ar.edu.utn.frbb.tup.model.exception.AsignaturaInexistenteException;
+import ar.edu.utn.frbb.tup.model.exception.CorrelatividadException;
+import ar.edu.utn.frbb.tup.model.exception.EstadoIncorrectoException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,23 +61,34 @@ public class Alumno {
         return this.asignaturas;
     }
 
-    //PARA APROBAR UNA ASIGNATURA NECESITA TENER TODAS LAS CORRELATIVIDADES APROBADAS
-    public boolean puedeAprobar(Asignatura a) throws CorrelatividadesNoAprobadasException {
-        boolean puedeAprobar = true;
-        if (a.getMateria().getCorrelatividades().isEmpty()) {
-            return puedeAprobar;
-        }
+    public void aprobarAsignatura(Materia materia, int nota) throws EstadoIncorrectoException, CorrelatividadException, AsignaturaInexistenteException {
+        Asignatura asignaturaAAprobar = getAsignaturaAAprobar(materia);
 
-        for (Materia m : a.getMateria().getCorrelatividades()) {
-            for (Asignatura asignatura : asignaturas) {
-                if (asignatura.getNombreAsignatura().equals(m.getNombre())) {
-                    if (!asignatura.getEstado().equals(EstadoAsignatura.APROBADA)) {
-                        throw new CorrelatividadesNoAprobadasException("Una o mas correlatividades no estan aprobadas");
-                    }
+        for (Materia correlativa :
+                materia.getCorrelativas()) {
+            chequearCorrelatividad(correlativa);
+        }
+        asignaturaAAprobar.aprobarAsignatura(nota);
+    }
+
+    private void chequearCorrelatividad(Materia correlativa) throws CorrelatividadException {
+        for (Asignatura a:
+                asignaturas) {
+            if (correlativa.getNombre().equals(a.getNombreAsignatura())) {
+                if (!EstadoAsignatura.APROBADA.equals(a.getEstado())) {
+                    throw new CorrelatividadException("La asignatura " + a.getNombreAsignatura() + " no está aprobada");
                 }
             }
         }
-        return puedeAprobar;
+    }
 
+    private Asignatura getAsignaturaAAprobar(Materia materia) throws AsignaturaInexistenteException {
+
+        for (Asignatura a: asignaturas) {
+            if (materia.getNombre().equals(a.getNombreAsignatura())) {
+                return a;
+            }
+        }
+        throw new AsignaturaInexistenteException("No se encontró la materia");
     }
 }
