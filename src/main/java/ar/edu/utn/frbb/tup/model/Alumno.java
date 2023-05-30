@@ -65,7 +65,7 @@ public class Alumno {
         Asignatura asignaturaAAprobar = getAsignaturaAAprobar(materia);
 
         for (Materia correlativa :
-                materia.getCorrelativas()) {
+                materia.getCorrelatividades()) {
             chequearCorrelatividad(correlativa);
         }
         asignaturaAAprobar.aprobarAsignatura(nota);
@@ -90,5 +90,20 @@ public class Alumno {
             }
         }
         throw new AsignaturaInexistenteException("No se encontró la materia");
+    }
+
+    public boolean puedeAprobar(Asignatura asignatura) {
+        return true;
+    }
+
+    public void actualizarAsignatura(Asignatura asignatura) {
+        for (Asignatura a:
+             asignaturas) {
+            if (a.getNombreAsignatura().equals(asignatura.getNombreAsignatura())) {
+                a.setEstado(asignatura.getEstado());
+                a.setNota(asignatura.getNota().get());
+            }
+        }
+
     }
 }

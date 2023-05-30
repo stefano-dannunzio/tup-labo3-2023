@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Materia {
 
+    private int materiaId;
     private final String nombre;
     private final int anio;
     private final int cuatrimestre;
@@ -34,7 +35,11 @@ public class Materia {
         return nombre;
     }
 
-    public List<Materia> getCorrelativas() {
-        return correlatividades;
+    public int getMateriaId() {
+        return materiaId;
+    }
+
+    public void setMateriaId(int materiaId) {
+        this.materiaId = materiaId;
     }
 }

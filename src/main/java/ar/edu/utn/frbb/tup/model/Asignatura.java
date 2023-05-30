@@ -44,20 +44,13 @@ public class Asignatura {
     }
 
     public void aprobarAsignatura(int nota) throws EstadoIncorrectoException {
-        if (nota<0 || nota>10){
-            throw new IllegalArgumentException("La nota debe estar entre 0 y 10");
-        }
-         if (!this.estado.equals(EstadoAsignatura.CURSADA)) {
+        if (!this.estado.equals(EstadoAsignatura.CURSADA)) {
             throw new EstadoIncorrectoException("La materia debe estar cursada");
         }
-
-
-        if (nota>=4 && nota<=10) {
+        if (nota>=4) {
             this.estado = EstadoAsignatura.APROBADA;
             this.nota = nota;
         }
-
-
     }
 
 }

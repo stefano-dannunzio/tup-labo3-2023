@@ -11,13 +11,18 @@ public class AlumnoDaoMemoryImpl implements AlumnoDao {
     private static Map<Long, Alumno> repositorioAlumnos = new HashMap<>();
 
     @Override
-    public void saveAlumno(Alumno alumno) throws DaoException {
+    public void saveAlumno(Alumno alumno) {
         repositorioAlumnos.put(alumno.getDni(), alumno);
     }
 
     @Override
-    public void findAlumno(Long dni) {
+    public Alumno findAlumno(Long dni) {
+        return null;
+    }
 
+    @Override
+    public Alumno loadAlumno(Long dni) {
+        return null;
     }
 
 }

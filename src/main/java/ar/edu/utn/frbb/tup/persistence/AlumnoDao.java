@@ -5,7 +5,9 @@ import ar.edu.utn.frbb.tup.persistence.exception.DaoException;
 
 public interface AlumnoDao {
 
-    void saveAlumno(Alumno a) throws DaoException;
+    void saveAlumno(Alumno a);
 
-    void findAlumno(Long dni);
+    Alumno findAlumno(Long dni);
+
+    Alumno loadAlumno(Long dni);
 }

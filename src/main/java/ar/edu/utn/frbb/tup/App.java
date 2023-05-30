@@ -19,7 +19,7 @@ public class App
 
         //Materia programacion1 = new Materia()
 
-        Alumno a = new Alumno();
+         Alumno a = new Alumno();
 
         AlumnoInputProcessor  inputProcessor = new AlumnoInputProcessor();
         inputProcessor.processInput(a);

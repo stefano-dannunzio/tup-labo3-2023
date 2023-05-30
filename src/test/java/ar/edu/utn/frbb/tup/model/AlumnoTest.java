@@ -85,7 +85,7 @@ public class AlumnoTest {
 
     }
 
-   /* @Test
+    @Test
     public void testNewAlumnoAprobandoAsignaturas() throws EstadoIncorrectoException {
         alumno = new Alumno("Stefano", "D'Annunzio", 42431228);
         alumno.agregarAsignatura(a1);
@@ -96,21 +96,14 @@ public class AlumnoTest {
         alumno.obtenerListaAsignaturas().get(1).cursarAsignatura();
         alumno.obtenerListaAsignaturas().get(2).cursarAsignatura();
         alumno.obtenerListaAsignaturas().get(3).cursarAsignatura();
-        try {
-            alumno.aprobarAsignatura();) {
-                alumno.obtenerListaAsignaturas().get(0).aprobarAsignatura(8);
-            }
-            if(alumno.puedeAprobar(alumno.obtenerListaAsignaturas().get(1))) {
-                alumno.obtenerListaAsignaturas().get(1).aprobarAsignatura(8);
-            }
-            if(alumno.puedeAprobar(alumno.obtenerListaAsignaturas().get(2))) {
-                alumno.obtenerListaAsignaturas().get(2).aprobarAsignatura(8);
-            }
-            if(alumno.puedeAprobar(alumno.obtenerListaAsignaturas().get(3))) {
-                alumno.obtenerListaAsignaturas().get(3).aprobarAsignatura(8);
-            }
-        } catch (CorrelatividadesNoAprobadasException e) {
-            throw new RuntimeException(e);
+        if(alumno.puedeAprobar(alumno.obtenerListaAsignaturas().get(1))) {
+            alumno.obtenerListaAsignaturas().get(1).aprobarAsignatura(8);
+        }
+        if(alumno.puedeAprobar(alumno.obtenerListaAsignaturas().get(2))) {
+            alumno.obtenerListaAsignaturas().get(2).aprobarAsignatura(8);
+        }
+        if(alumno.puedeAprobar(alumno.obtenerListaAsignaturas().get(3))) {
+            alumno.obtenerListaAsignaturas().get(3).aprobarAsignatura(8);
         }
         assertEquals(EstadoAsignatura.APROBADA, alumno.obtenerListaAsignaturas().get(0).getEstado());
         assertEquals(EstadoAsignatura.APROBADA, alumno.obtenerListaAsignaturas().get(1).getEstado());
@@ -156,5 +149,5 @@ public class AlumnoTest {
             throw new RuntimeException(e);
         }
 
-    }*/
+    }
 }
