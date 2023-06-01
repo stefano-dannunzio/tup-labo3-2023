@@ -6,10 +6,12 @@ import java.util.Optional;
 
 public class Asignatura {
 
-    private final Materia materia;
+    private Materia materia;
     private EstadoAsignatura estado;
     private Integer nota;
 
+    public Asignatura() {
+    }
     public Asignatura(Materia materia) {
         this.materia = materia;
         this.estado = EstadoAsignatura.NO_CURSADA;

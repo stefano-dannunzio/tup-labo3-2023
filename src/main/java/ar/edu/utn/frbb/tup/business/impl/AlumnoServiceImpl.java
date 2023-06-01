@@ -9,11 +9,12 @@ import ar.edu.utn.frbb.tup.model.Materia;
 import ar.edu.utn.frbb.tup.model.exception.CorrelatividadesNoAprobadasException;
 import ar.edu.utn.frbb.tup.model.exception.EstadoIncorrectoException;
 import ar.edu.utn.frbb.tup.persistence.AlumnoDao;
+import ar.edu.utn.frbb.tup.persistence.AlumnoDaoMemoryImpl;
 
 public class AlumnoServiceImpl implements AlumnoService {
 
-    private AlumnoDao alumnoDao;
-    private AsignaturaService asignaturaService;
+    private static final AlumnoDao alumnoDao = new AlumnoDaoMemoryImpl();
+    private static final AsignaturaService asignaturaService = new AsignaturaServiceImpl();
 
     @Override
     public void aprobarAsignatura(int materiaId, int nota, long dni) throws EstadoIncorrectoException, CorrelatividadesNoAprobadasException {
@@ -29,6 +30,11 @@ public class AlumnoServiceImpl implements AlumnoService {
         asignaturaService.actualizarAsignatura(a);
         Alumno alumno = alumnoDao.loadAlumno(dni);
         alumno.actualizarAsignatura(a);
+        alumnoDao.saveAlumno(alumno);
+    }
+
+    @Override
+    public void crearAlumno(Alumno alumno) {
         alumnoDao.saveAlumno(alumno);
     }
 }

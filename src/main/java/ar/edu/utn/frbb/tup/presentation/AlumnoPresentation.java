@@ -1,12 +1,24 @@
 package ar.edu.utn.frbb.tup.presentation;
 
 import ar.edu.utn.frbb.tup.business.AlumnoService;
+import ar.edu.utn.frbb.tup.business.impl.AlumnoServiceImpl;
+import ar.edu.utn.frbb.tup.model.Alumno;
+import ar.edu.utn.frbb.tup.model.exception.CorrelatividadesNoAprobadasException;
+import ar.edu.utn.frbb.tup.model.exception.EstadoIncorrectoException;
 
 public class AlumnoPresentation {
 
-    private AlumnoService alumnoService;
+    private static final AlumnoInputProcessor alumnoInputProcessor = new AlumnoInputProcessor();
+    private static final AlumnoService alumnoService = new AlumnoServiceImpl();
 
-    public void aprobarAsignatura(int materiaId, int nota, long dni) {
+
+    public void crearAlumno(){
+        Alumno alumno = new Alumno();
+        alumnoInputProcessor.processInput(Alumno.class, alumno);
+        alumnoService.crearAlumno(alumno);
+    }
+
+    public void aprobarAsignatura(int materiaId, int nota, long dni) throws CorrelatividadesNoAprobadasException, EstadoIncorrectoException {
         validarNota(nota);
         alumnoService.aprobarAsignatura(materiaId, nota, dni);
     }
