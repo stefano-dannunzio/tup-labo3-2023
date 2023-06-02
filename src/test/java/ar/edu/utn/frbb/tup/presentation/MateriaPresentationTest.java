@@ -11,6 +11,10 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -36,6 +40,24 @@ public class MateriaPresentationTest {
         when(inputProcessor.inputData()).thenReturn(m);
         materiaPresentation.crearMateria();
         verify(materiaService, times(1)).crearMateria(any(Materia.class));
+    }
+
+    @Test
+    public void testListarMaterias_filtraOK() {
+        Materia m = new Materia("labo 3", 2, 1, new Profesor("Lucho", "Salotto", "Lic"));
+        Materia m1 = new Materia("labo 2", 2, 1, new Profesor("Juan", "Perez", "Lic"));
+        when(materiaService.getAllMaterias()).thenReturn(Arrays.asList(m,m1));
+        List<Materia> mats = materiaPresentation.listarMaterias();
+        assertEquals(1, mats.size());
+    }
+
+    @Test
+    public void testListarMaterias_noFiltra() {
+        Materia m = new Materia("labo 1", 2, 1, new Profesor("Lucho", "Salotto", "Lic"));
+        Materia m1 = new Materia("labo 2", 2, 1, new Profesor("Juan", "Perez", "Lic"));
+        when(materiaService.getAllMaterias()).thenReturn(Arrays.asList(m,m1));
+        List<Materia> mats = materiaPresentation.listarMaterias();
+        assertEquals(2, mats.size());
     }
 
 }
