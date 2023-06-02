@@ -24,7 +24,7 @@ public class MateriaPresentation extends AbtractBasePresentation {
         List<Materia> filtrado = new ArrayList<>();
         for (Materia m:
              mats) {
-            if (m.getNombre().indexOf('3')>0) {
+            if (m.getNombre() != null && m.getNombre().indexOf('3')>0) {
                 continue;
             }
             filtrado.add(m);

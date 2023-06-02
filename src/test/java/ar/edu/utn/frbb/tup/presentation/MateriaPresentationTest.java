@@ -60,4 +60,13 @@ public class MateriaPresentationTest {
         assertEquals(2, mats.size());
     }
 
+    @Test
+    public void testListMaterias_nombreNull() {
+        Materia m = new Materia(null, 2, 1, new Profesor("Lucho", "Salotto", "Lic"));
+        Materia m1 = new Materia("labo 2", 2, 1, new Profesor("Juan", "Perez", "Lic"));
+        when(materiaService.getAllMaterias()).thenReturn(Arrays.asList(m,m1));
+        List<Materia> mats = materiaPresentation.listarMaterias();
+        assertEquals(2, mats.size());
+    }
+
 }
