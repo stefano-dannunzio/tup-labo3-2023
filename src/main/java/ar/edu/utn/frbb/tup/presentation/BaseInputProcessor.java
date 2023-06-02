@@ -3,7 +3,7 @@ package ar.edu.utn.frbb.tup.presentation;
 import java.util.Map;
 import java.util.Scanner;
 
-public abstract class BaseInputProcessor {
+public abstract class BaseInputProcessor implements InputProcessor {
     private Scanner scanner = new Scanner(System.in);
 
     public abstract Object inputData();

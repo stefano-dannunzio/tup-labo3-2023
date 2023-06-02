@@ -1,6 +1,8 @@
 package ar.edu.utn.frbb.tup;
 
+import ar.edu.utn.frbb.tup.business.impl.MateriaServiceImpl;
 import ar.edu.utn.frbb.tup.presentation.AlumnoPresentation;
+import ar.edu.utn.frbb.tup.presentation.MateriaInputProcessor;
 import ar.edu.utn.frbb.tup.presentation.MateriaPresentation;
 
 /**
@@ -14,7 +16,7 @@ public class App
 
         System.out.print("\033[H\033[2J");
         System.out.flush();
-        MateriaPresentation materiaPresentation = new MateriaPresentation();
+        MateriaPresentation materiaPresentation = new MateriaPresentation(new MateriaInputProcessor(), new MateriaServiceImpl());
         materiaPresentation.crearMateria();
 
         System.out.print("\033[H\033[2J");
