@@ -2,16 +2,22 @@ package ar.edu.utn.frbb.tup.presentation;
 
 import ar.edu.utn.frbb.tup.business.MateriaService;
 import ar.edu.utn.frbb.tup.model.Materia;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class MateriaPresentation extends AbtractBasePresentation {
-    private static MateriaService materiaService;
 
-    public MateriaPresentation(InputProcessor inputProcessor, MateriaService service) {
+    private MateriaService materiaService;
+
+    @Autowired
+    public MateriaPresentation(MateriaService materiaService, @Qualifier("materiaInputProcessor") InputProcessor inputProcessor) {
         super(inputProcessor);
-        this.materiaService = service;
+        this.materiaService = materiaService;
     }
 
     public void crearMateria() {

@@ -31,7 +31,7 @@ public class MateriaPresentationTest {
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
-        materiaPresentation = new MateriaPresentation(inputProcessor, materiaService);
+        materiaPresentation = new MateriaPresentation(materiaService, inputProcessor);
     }
 
     @Test
