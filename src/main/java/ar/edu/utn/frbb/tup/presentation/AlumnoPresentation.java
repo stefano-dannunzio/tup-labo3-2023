@@ -3,6 +3,7 @@ package ar.edu.utn.frbb.tup.presentation;
 import ar.edu.utn.frbb.tup.business.AlumnoService;
 import ar.edu.utn.frbb.tup.business.impl.AlumnoServiceImpl;
 import ar.edu.utn.frbb.tup.model.Alumno;
+import ar.edu.utn.frbb.tup.model.dto.AlumnoDto;
 import ar.edu.utn.frbb.tup.model.exception.CorrelatividadesNoAprobadasException;
 import ar.edu.utn.frbb.tup.model.exception.EstadoIncorrectoException;
 
@@ -15,7 +16,7 @@ public class AlumnoPresentation {
     public void crearAlumno(){
         Alumno alumno = new Alumno();
         alumnoInputProcessor.processInput(Alumno.class, alumno);
-        alumnoService.crearAlumno(alumno);
+        alumnoService.crearAlumno(new AlumnoDto());
     }
 
     public void aprobarAsignatura(int materiaId, int nota, long dni) throws CorrelatividadesNoAprobadasException, EstadoIncorrectoException {

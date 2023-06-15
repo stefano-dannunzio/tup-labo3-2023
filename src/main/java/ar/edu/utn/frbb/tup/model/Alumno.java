@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Alumno {
+    private long id;
 
     private String nombre;
     private String apellido;
@@ -105,5 +106,13 @@ public class Alumno {
             }
         }
 
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

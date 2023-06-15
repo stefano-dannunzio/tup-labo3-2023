@@ -14,4 +14,24 @@ public class Profesor {
         this.nombre = nombre;
         this.titulo = titulo;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public List<Materia> getMateriasDictadas() {
+        return materiasDictadas;
+    }
+
+    public void setMateriasDictadas(List<Materia> materiasDictadas) {
+        this.materiasDictadas = materiasDictadas;
+    }
 }

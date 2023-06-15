@@ -6,11 +6,16 @@ import ar.edu.utn.frbb.tup.model.Alumno;
 import ar.edu.utn.frbb.tup.model.Asignatura;
 import ar.edu.utn.frbb.tup.model.EstadoAsignatura;
 import ar.edu.utn.frbb.tup.model.Materia;
+import ar.edu.utn.frbb.tup.model.dto.AlumnoDto;
 import ar.edu.utn.frbb.tup.model.exception.CorrelatividadesNoAprobadasException;
 import ar.edu.utn.frbb.tup.model.exception.EstadoIncorrectoException;
 import ar.edu.utn.frbb.tup.persistence.AlumnoDao;
 import ar.edu.utn.frbb.tup.persistence.AlumnoDaoMemoryImpl;
+import org.springframework.stereotype.Component;
 
+import java.util.Random;
+
+@Component
 public class AlumnoServiceImpl implements AlumnoService {
 
     private static final AlumnoDao alumnoDao = new AlumnoDaoMemoryImpl();
@@ -34,7 +39,13 @@ public class AlumnoServiceImpl implements AlumnoService {
     }
 
     @Override
-    public void crearAlumno(Alumno alumno) {
-        alumnoDao.saveAlumno(alumno);
+    public Alumno crearAlumno(AlumnoDto alumno) {
+        Alumno a = new Alumno();
+        a.setNombre(alumno.getNombre());
+        a.setApellido(alumno.getApellido());
+        a.setDni(alumno.getDni());
+        Random random = new Random();
+        a.setId(random.nextLong());
+        return a;
     }
 }
