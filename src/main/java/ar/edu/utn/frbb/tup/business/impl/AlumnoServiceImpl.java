@@ -46,6 +46,12 @@ public class AlumnoServiceImpl implements AlumnoService {
         a.setDni(alumno.getDni());
         Random random = new Random();
         a.setId(random.nextLong());
+        alumnoDao.saveAlumno(a);
         return a;
+    }
+
+    @Override
+    public Alumno buscarAlumno(String apellido) {
+        return alumnoDao.findAlumno(apellido);
     }
 }

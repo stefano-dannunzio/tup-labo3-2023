@@ -5,9 +5,9 @@ import ar.edu.utn.frbb.tup.persistence.exception.DaoException;
 
 public interface AlumnoDao {
 
-    void saveAlumno(Alumno a);
+    Alumno saveAlumno(Alumno a);
 
-    Alumno findAlumno(Long dni);
+    Alumno findAlumno(String apellidoAlumno);
 
     Alumno loadAlumno(Long dni);
 }
