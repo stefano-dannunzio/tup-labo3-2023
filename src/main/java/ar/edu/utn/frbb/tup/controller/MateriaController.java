@@ -25,7 +25,7 @@ public class MateriaController {
         return Arrays.asList(m1, m);
     }
 
-    @PostMapping("/")
+    @PostMapping
     public Materia crearMateria(@RequestBody MateriaDto materiaDto) {
         return materiaService.crearMateria(materiaDto);
     }

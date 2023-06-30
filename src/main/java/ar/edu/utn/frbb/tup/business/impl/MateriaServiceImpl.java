@@ -22,13 +22,16 @@ public class MateriaServiceImpl implements MateriaService {
     private ProfesorService profesorService;
 
     @Override
-    public Materia crearMateria(MateriaDto materia) {
+    public Materia crearMateria(MateriaDto materia) throws IllegalArgumentException{
         Materia m = new Materia();
         m.setNombre(materia.getNombre());
         m.setAnio(materia.getAnio());
         m.setCuatrimestre(materia.getCuatrimestre());
         m.setProfesor(profesorService.buscarProfesor(materia.getProfesorId()));
         dao.save(m);
+        if (m.getNombre().contains("a")) {
+            throw new IllegalArgumentException();
+        }
         return m;
     }
 

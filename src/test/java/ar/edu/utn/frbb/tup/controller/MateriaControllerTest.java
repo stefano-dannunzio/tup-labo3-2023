@@ -28,7 +28,6 @@ import org.springframework.web.context.WebApplicationContext;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 @ExtendWith(SpringExtension.class)
 public class MateriaControllerTest {
@@ -57,7 +56,7 @@ public class MateriaControllerTest {
         materiaDto.setCuatrimestre(2);
         materiaDto.setNombre("Laboratorio II");
         materiaDto.setProfesorId(345);
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/materia/")
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/materia")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(mapper.writeValueAsString(materiaDto))
                 .accept(MediaType.APPLICATION_JSON)).andExpect(status().is2xxSuccessful())
@@ -66,6 +65,23 @@ public class MateriaControllerTest {
 
 
         Assertions.assertEquals(new Materia(), mapper.readValue(result.getResponse().getContentAsString(), Materia.class));
+    }
+
+    @Test
+    public void testCrearMateriaBadRequest() throws Exception {
+
+        Mockito.when(materiaService.crearMateria(any(MateriaDto.class))).thenReturn(new Materia());
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/materia")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\n" +
+                                "    \"nombre\" : \"Laboratorio II\",\n" +
+                                "    \"anio\" : \"segundo\", \n" +
+                                "    \"cuatrimestre\" : 1,\n" +
+                                "    \"profesorId\" : 2 \n"+
+                                "}")
+                        .accept(MediaType.APPLICATION_JSON)).andExpect(status().isBadRequest())
+                .andReturn();
+
     }
 
 
