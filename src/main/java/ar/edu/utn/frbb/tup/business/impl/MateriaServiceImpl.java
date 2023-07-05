@@ -30,7 +30,7 @@ public class MateriaServiceImpl implements MateriaService {
         m.setCuatrimestre(materia.getCuatrimestre());
         m.setProfesor(profesorService.buscarProfesor(materia.getProfesorId()));
         dao.save(m);
-        if (m.getNombre().contains("a")) {
+        if (m.getNombre().contains("#")) {
             throw new IllegalArgumentException();
         }
         return m;
@@ -44,5 +44,32 @@ public class MateriaServiceImpl implements MateriaService {
     @Override
     public Materia getMateriaById(int idMateria) throws MateriaNotFoundException {
         return dao.findById(idMateria);
+    }
+
+    @Override
+    public Materia modificarMateria(Integer idMateria, MateriaDto materia) throws MateriaNotFoundException, IllegalArgumentException {
+        Materia m = dao.findById(idMateria);
+        m.setNombre(materia.getNombre());
+        m.setAnio(materia.getAnio());
+        m.setCuatrimestre(materia.getCuatrimestre());
+        m.setProfesor(profesorService.buscarProfesor(materia.getProfesorId()));
+        dao.modify(idMateria, m);
+        if (m.getNombre().contains("#")) {
+            throw new IllegalArgumentException();
+        }
+        return m;
+
+    }
+
+    @Override
+    public void eliminarMateria(Integer idMateria) throws MateriaNotFoundException {
+        dao.delete(idMateria);
+
+    }
+
+    @Override
+    public List<Materia> getMateriaByNombre(String unNombre) throws MateriaNotFoundException{
+
+        return dao.findByNombre(unNombre);
     }
 }

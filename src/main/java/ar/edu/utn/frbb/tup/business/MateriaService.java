@@ -12,4 +12,10 @@ public interface MateriaService {
     List<Materia> getAllMaterias();
 
     Materia getMateriaById(int idMateria) throws MateriaNotFoundException;
+
+    Materia modificarMateria(Integer idMateria, MateriaDto modData) throws MateriaNotFoundException, IllegalArgumentException;
+
+    void eliminarMateria(Integer idMateria) throws MateriaNotFoundException;
+
+    List<Materia> getMateriaByNombre(String unNombre) throws MateriaNotFoundException;
 }

@@ -22,7 +22,7 @@ public class AlumnoServiceImpl implements AlumnoService {
     private static final AsignaturaService asignaturaService = new AsignaturaServiceImpl();
 
     @Override
-    public void aprobarAsignatura(int materiaId, int nota, long dni) throws EstadoIncorrectoException, CorrelatividadesNoAprobadasException {
+    public void aprobarAsignatura(long materiaId, int nota, long dni) throws EstadoIncorrectoException, CorrelatividadesNoAprobadasException {
         Asignatura a = asignaturaService.getAsignatura(materiaId, dni);
         for (Materia m:
              a.getMateria().getCorrelatividades()) {

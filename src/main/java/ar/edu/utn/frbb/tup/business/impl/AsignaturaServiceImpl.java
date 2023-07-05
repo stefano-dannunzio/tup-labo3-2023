@@ -15,7 +15,7 @@ import java.util.List;
 
 public class AsignaturaServiceImpl implements AsignaturaService {
     @Override
-    public Asignatura getAsignatura(int materiaId, long dni) {
+    public Asignatura getAsignatura(long materiaId, long dni) {
         return null;
     }
 
