@@ -18,4 +18,6 @@ public interface MateriaService {
     void eliminarMateria(Integer idMateria) throws MateriaNotFoundException;
 
     List<Materia> getMateriaByNombre(String unNombre) throws MateriaNotFoundException;
+
+    List<Materia> getMateriaByNombreYCodigo(String ordenNombre, String ordenCodigo);
 }

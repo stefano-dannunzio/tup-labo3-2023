@@ -15,4 +15,6 @@ public interface MateriaDao {
     void delete(Integer idMateria) throws MateriaNotFoundException;
 
     List<Materia> findByNombre(String unNombre) throws MateriaNotFoundException;
+
+    List<Materia> sortByNombreYCodigo(String ordenNombre, String ordenCodigo);
 }

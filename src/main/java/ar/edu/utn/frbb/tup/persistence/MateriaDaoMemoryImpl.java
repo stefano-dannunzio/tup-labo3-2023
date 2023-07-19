@@ -49,7 +49,7 @@ public class MateriaDaoMemoryImpl implements MateriaDao {
         List<Materia> listaMaterias = new ArrayList<>();
         for (Materia m:
                 repositorioMateria.values()) {
-            if (unNombre.equals(m.getNombre())) {
+            if (m.getNombre().toLowerCase().contains(unNombre.toLowerCase())) {
                 listaMaterias.add(m);
             }
         }
@@ -59,6 +59,25 @@ public class MateriaDaoMemoryImpl implements MateriaDao {
         else {
             return listaMaterias;
         }
+    }
+
+    @Override
+    public List<Materia> sortByNombreYCodigo(String ordenNombre, String ordenCodigo) {
+        List<Materia> listaMaterias = new ArrayList<>();
+        listaMaterias.addAll(repositorioMateria.values());
+        if (ordenNombre.equalsIgnoreCase("asc")) {
+            listaMaterias.sort(Comparator.comparing(Materia::getNombre));
+        } else {
+            listaMaterias.sort(Comparator.comparing(Materia::getNombre).reversed());
+        }
+
+        if (ordenCodigo.equalsIgnoreCase("asc")) {
+            listaMaterias.sort(Comparator.comparing(Materia::getMateriaId));
+        } else {
+            listaMaterias.sort(Comparator.comparing(Materia::getMateriaId).reversed());
+        }
+
+        return listaMaterias;
     }
 
     private synchronized int generarnuevoID() { return ++contadorId; }

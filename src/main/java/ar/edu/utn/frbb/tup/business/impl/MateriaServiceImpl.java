@@ -72,4 +72,9 @@ public class MateriaServiceImpl implements MateriaService {
 
         return dao.findByNombre(unNombre);
     }
+
+    @Override
+    public List<Materia> getMateriaByNombreYCodigo(String ordenNombre, String ordenCodigo) {
+        return dao.sortByNombreYCodigo(ordenNombre, ordenCodigo);
+    }
 }

@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping("materia")
+@RequestMapping()
 public class MateriaController {
 
     @Autowired
@@ -29,38 +29,43 @@ public class MateriaController {
     }*/
 
     //CREAR MATERIA
-    @PostMapping
+    @PostMapping("/materia")
     public ResponseEntity<Materia> crearMateria(@RequestBody MateriaDto materiaDto) throws IllegalArgumentException {
         return ResponseEntity.status(HttpStatus.CREATED).body(materiaService.crearMateria(materiaDto));
     }
 
     //MODIFICAR MATERIA BUSCANDOLA POR SU ID
-    @PutMapping("/{idMateria}")
+    @PutMapping("/materia/{idMateria}")
     public ResponseEntity<Materia> modificarMateria(@PathVariable Integer idMateria, @RequestBody MateriaDto materiaDto) throws MateriaNotFoundException, IllegalArgumentException {
         return ResponseEntity.ok(materiaService.modificarMateria(idMateria,materiaDto));
     }
 
     //ELIMINAR MATERIA BUSCANDOLA POR SU ID
-    @DeleteMapping("/{idMateria}")
+    @DeleteMapping("/materia/{idMateria}")
     public ResponseEntity<Void> eliminarMateria(@PathVariable Integer idMateria) throws MateriaNotFoundException {
         materiaService.eliminarMateria(idMateria);
         return ResponseEntity.noContent().build();
     }
 
     //OBTENER MATERIA POR ID
-    @GetMapping("/{idMateria}")
+    @GetMapping("/materia/{idMateria}")
     public ResponseEntity<Materia> getMateriaById(@PathVariable Integer idMateria) throws MateriaNotFoundException {
         return ResponseEntity.ok(materiaService.getMateriaById(idMateria));
     }
 
     //OBTENER MATERIAS POR NOMBRE
 
-    @GetMapping()
+    @GetMapping("/materia")
     public ResponseEntity<List<Materia>> getMateriasByNombre(@RequestParam String nombre) throws MateriaNotFoundException {
         return ResponseEntity.ok(materiaService.getMateriaByNombre(nombre));
     }
 
     //OBTENER MATERIAS POR NOMBRE y CODIGO
+    @GetMapping("/materias")
+    public ResponseEntity<List<Materia>> getMateriasByNombreYCodigo(@RequestParam String ordenNombre, @RequestParam String ordenCodigo) {
+        return ResponseEntity.ok(materiaService.getMateriaByNombreYCodigo(ordenNombre, ordenCodigo));
+
+    }
 
 
 
