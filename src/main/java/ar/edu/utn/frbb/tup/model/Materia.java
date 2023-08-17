@@ -8,7 +8,33 @@ public class Materia {
 
     private int materiaId;
     private String nombre;
+    private int anio;
+    private int cuatrimestre;
+    private Profesor profesor;
+    private List<Materia> correlatividades;
+    private int codigoCarrera;
 
+    public Materia(){}
+
+
+    public Materia(String nombre, int anio, int cuatrimestre, Profesor profesor, int codigoCarrera) {
+        this.anio = anio;
+        this.cuatrimestre = cuatrimestre;
+        this.nombre = nombre;
+        this.profesor = profesor;
+        this.codigoCarrera = codigoCarrera;
+
+        correlatividades = new ArrayList<>();
+    }
+
+    public void agregarCorrelatividad(Materia m){
+        this.correlatividades.add(m);
+
+    }
+
+    public List<Materia> getCorrelatividades(){
+        return this.correlatividades;
+    }
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -41,33 +67,6 @@ public class Materia {
         this.correlatividades = correlatividades;
     }
 
-    private int anio;
-    private int cuatrimestre;
-    private Profesor profesor;
-
-    private List<Materia> correlatividades;
-
-    public Materia(){}
-
-
-    public Materia(String nombre, int anio, int cuatrimestre, Profesor profesor) {
-        this.anio = anio;
-        this.cuatrimestre = cuatrimestre;
-        this.nombre = nombre;
-        this.profesor = profesor;
-
-        correlatividades = new ArrayList<>();
-    }
-
-    public void agregarCorrelatividad(Materia m){
-        this.correlatividades.add(m);
-
-    }
-
-    public List<Materia> getCorrelatividades(){
-        return this.correlatividades;
-    }
-
     public String getNombre() {
         return nombre;
     }
@@ -78,6 +77,13 @@ public class Materia {
 
     public void setMateriaId(int materiaId) {
         this.materiaId = materiaId;
+    }
+    public int getCodigoCarrera() {
+        return this.codigoCarrera;
+    }
+
+    public void setCodigoCarrera(int codigo) {
+        this.codigoCarrera = codigo;
     }
 
     @Override

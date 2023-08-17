@@ -29,6 +29,7 @@ public class MateriaServiceImpl implements MateriaService {
         m.setAnio(materia.getAnio());
         m.setCuatrimestre(materia.getCuatrimestre());
         m.setProfesor(profesorService.buscarProfesor(materia.getProfesorId()));
+        m.setCodigoCarrera(materia.getCodigoCarrera());
         dao.save(m);
         if (m.getNombre().contains("#")) {
             throw new IllegalArgumentException();
@@ -53,6 +54,7 @@ public class MateriaServiceImpl implements MateriaService {
         m.setAnio(materia.getAnio());
         m.setCuatrimestre(materia.getCuatrimestre());
         m.setProfesor(profesorService.buscarProfesor(materia.getProfesorId()));
+        m.setCodigoCarrera(materia.getCodigoCarrera());
         dao.modify(idMateria, m);
         if (m.getNombre().contains("#")) {
             throw new IllegalArgumentException();

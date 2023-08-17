@@ -19,15 +19,7 @@ public class MateriaController {
 
     @Autowired
     private MateriaService materiaService;
-
-    /*@GetMapping
-    public List<Materia> getMaterias() {
-        Materia m = new Materia("labo 1", 2, 1, new Profesor("Lucho", "Salotto", "Lic"));
-        Materia m1 = new Materia("labo 2", 2, 1, new Profesor("Juan", "Perez", "Lic"));
-
-        return Arrays.asList(m1, m);
-    }*/
-
+    
     //CREAR MATERIA
     @PostMapping("/materia")
     public ResponseEntity<Materia> crearMateria(@RequestBody MateriaDto materiaDto) throws IllegalArgumentException {
